@@ -1,0 +1,53 @@
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:cardElevation="4dp"
+    app:cardCornerRadius="8dp"
+    android:layout_marginHorizontal="16dp"
+    android:layout_marginVertical="8dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp">
+
+        <CheckBox
+            android:id="@+id/todoCheckBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:buttonTint="@color/blue"
+            android:paddingStart="8dp"
+            tools:text="Default Text" />
+
+        <TextView
+            android:id="@+id/recyclingItemQuantity"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignTop="@id/todoCheckBox"
+            android:layout_alignBottom="@id/todoCheckBox"
+            android:layout_centerInParent="true"
+            android:layout_toEndOf="@id/todoCheckBox"
+            android:layout_toLeftOf="@id/carbonUnits"
+            android:textAlignment="viewEnd"
+            android:padding="15dp"
+            tools:text="(0)" />
+
+        <TextView
+            android:id="@+id/carbonUnits"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignTop="@id/todoCheckBox"
+            android:layout_alignBottom="@id/todoCheckBox"
+            android:layout_alignParentEnd="true"
+            android:layout_centerInParent="true"
+            android:layout_toEndOf="@id/recyclingItemQuantity"
+            android:textAlignment="viewEnd"
+            android:padding="15dp"
+            tools:text="Default g of CO2" />
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

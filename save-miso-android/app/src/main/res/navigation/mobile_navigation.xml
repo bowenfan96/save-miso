@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navHome">
+
+    <fragment
+        android:id="@+id/navHome"
+        android:name="com.example.snapcycle.ui.home.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_navHome_to_unityFragment"
+            app:destination="@id/unityFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navInstructions"
+        android:name="com.example.snapcycle.ui.dashboard.DashboardFragment"
+        android:label="@string/title_dashboard"
+        tools:layout="@layout/fragment_dashboard" />
+
+    <fragment
+        android:id="@+id/navNotifications"
+        android:name="com.example.snapcycle.ui.notifications.NotificationsFragment"
+        android:label="@string/title_notifications"
+        tools:layout="@layout/fragment_notifications" />
+
+    <fragment
+        android:id="@+id/navMyRecycling"
+        android:name="com.example.snapcycle.ui.recycling.MyRecyclingFragment"
+        android:label="@string/title_myrecycling"
+        tools:layout="@layout/fragment_my_recycling" />
+
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.example.snapcycle.SettingsFragment"
+        android:label="SettingsFragment" />
+    <fragment
+        android:id="@+id/manualInputFragment"
+        android:name="com.example.snapcycle.ManualInputFragment"
+        android:label="@string/title_manual_input"
+        tools:layout="@layout/fragment_manual_input">
+        <action
+            android:id="@+id/action_manualInputFragment_to_confirmAddFragment"
+            app:destination="@id/confirmAddFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/confirmAddFragment"
+        android:name="com.example.snapcycle.ConfirmAddFragment"
+        android:label="@string/title_confirm_add"
+        tools:layout="@layout/fragment_confirm_add">
+        <action
+            android:id="@+id/action_confirmAddFragment_to_navInstructions"
+            app:destination="@id/navInstructions" />
+        <action
+            android:id="@+id/action_confirmAddFragment_to_manualInputFragment"
+            app:destination="@id/manualInputFragment"
+            app:popUpTo="@id/manualInputFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/unityFragment"
+        android:name="com.example.snapcycle.UnityFragment"
+        android:label="fragment_unity"
+        tools:layout="@layout/fragment_unity">
+        <action
+            android:id="@+id/action_unityFragment_pop2"
+            app:popUpTo="@id/unityFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+</navigation>

@@ -1,0 +1,110 @@
+<resources>
+    <string name="app_name">Save Miso</string>
+    <!--attempt to fix unity error-->
+    <string name="game_view_content_description">Game view</string>
+
+    <string-array name="recycleables_array">
+        <item>Can</item>
+        <item>Battery</item>
+        <item>Brown glass</item>
+        <item>Cardboard</item>
+        <item>Green glass</item>
+        <item>HDPE</item>
+        <item>Paper</item>
+        <item>PET bottle</item>
+        <item>White glass</item>
+    </string-array>
+    <string-array name="can_size_array">
+        <item>300ml</item>
+        <item>330ml</item>
+    </string-array>
+    <string name="title_activity_maps">Map</string>
+    <string name="picture">Picture</string>
+    <string name="description_info">Info</string>
+    <string name="request_permission">This sample needs camera permission.</string>
+    <string name="camera_error">This device doesn\'t support Camera2 API.</string>
+    <string name="toggle_turn_on">NN:On</string>
+    <string name="toggle_turn_off">NN:Off</string>
+    <string name="toggle">Use NNAPI</string>
+    <string name="title_activity_bottom_nav">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Green Guide</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_account">Account</string>
+    <string name="title_myrecycling">My Recycling</string>
+    <string name="title_manual_input">Add an Item</string>
+    <string name="title_confirm_add">Your Item</string>
+    <!-- Preference Titles -->
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+
+    <!-- From TFLite -->
+    <string name="tfe_ic_app_name" translation_description="Image Classification demo app [CHAR_LIMIT=40]">TFL Classify</string>
+    <string name="tfe_ic_camera_error" translation_description="Error regarding camera support[CHAR_LIMIT=40]">This device doesn\'t support Camera2 API.</string>
+    <string name="tfe_ic_gpu_quant_error" translation_description="Error regarding GPU support for Quant models[CHAR_LIMIT=60]">GPU does not yet supported quantized models.</string>
+
+    <string name="model">Model:</string>
+    <string-array name="models">
+        <item>Float</item>
+        <item>Quantized</item>
+    </string-array>
+
+    <string name="device">Device:</string>
+    <string name="instructionsMenu1">General</string>
+    <string name="instructionsMenu2">Recycling Locations</string>
+    <string name="instructionsMenu3">eWaste</string>
+    <string name="instructionsSource1">National Environment Agency, Singapore (2021)</string>
+    <string name="instructionsSource2">Towards Zero Waste, Singapore (2021)</string>
+
+    <string name="instructionsText1"><br>Blue recycling bins can be found across residential estates in Singapore. Paper, plastic,
+        glass and metal recycleables can be deposited into these blue bins for collection.</br><br></br>
+        <br>Items contaminated by food or liquid waste cannot be recycled. The following infographic shows items that are commonly mistaken for recycleables. </br> <br></br></string>
+
+    <string name="instructionsText2">Hello blank fragment 2</string>
+
+    <string name="ewasteSource1">Straits Times (2018)</string>
+
+    <string name="ewasteText1"><br>E-waste is made of unwanted electrical and electronic equipment.
+        Examples include computers, TVs, batteries, and light bulbs. E-waste is mainly made of metal and plastic, but may contain some heavy metal and other materials of concern.
+        Hence, we should minimise e-waste and dispose of them properly. Households can reduce e-waste through repairing devices where possible, donating items that can still be used,
+        or by recycling e-waste through recycling schemes as follows:</br> <br></br></string>
+
+    <string name="ewasteText2">For more information, visit <a href="https://www.nea.gov.sg/our-services/waste-management/3r-programmes-and-resources/e-waste-management/where-to-recycle-e-waste">NEA Singapore</a></string>
+
+    <string name="instructionsText3">Hello blank fragment 3</string>
+
+    <string name="recyclingLocationsText1"><br>In addition to the blue recycling bins found across residential areas, there are 50 smart Reverse Vending Machines (RVMs) in shopping malls and schools all over Singapore.
+        Help save the environment while gaining rewards for recycling!</br> <br></br></string>
+
+    <string name="recyclingLocationsSource1">Recycle N Save (2021)</string>
+
+    <string name="recyclingLocationsText2"><br>When you recycle aluminium cans or plastic bottles, you can win grocery vouchers, shopping mall vouchers, sports vouchers, attraction vouchers, and more!
+        Refer to the following infographics to see what you can earn through recycling:</br> <br></br></string>
+
+    <string name="recyclingLocationsText3">Further information can be found at <a href="https://recyclensave.sg/">RecycleNSave.sg</a> and <a href="https://www.nea.gov.sg/our-services/waste-management/reverse-vending-machines">NEA Singapore</a></string>
+
+    <string-array name="devices">
+        <item>CPU</item>
+        <item>GPU</item>
+        <item>NNAPI</item>
+    </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_notification">NotificationActivity</string>
+    <!--
+    This string is used for square devices and overridden by hello_world in
+    values-round/strings.xml for round devices.
+    -->
+    <string name="hello_world">Hello Square World!</string>
+</resources>

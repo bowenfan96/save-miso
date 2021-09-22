@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TabFragment1">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingVertical="20dip">
+
+        <ImageView
+            android:id="@+id/ewaste"
+            android:adjustViewBounds="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:contentDescription="ewaste"
+            android:paddingTop="20dip"
+            android:paddingHorizontal="20dip"
+            android:src="@drawable/ewaste"></ImageView>
+
+        <TextView
+            android:id="@+id/ewasteSource1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="@string/ewasteSource1" />
+
+        <TextView
+            android:id="@+id/ewasteText1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="20dip"
+            android:text="@string/ewasteText1" />
+
+        <ImageView
+            android:id="@+id/ewastechart"
+            android:adjustViewBounds="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:contentDescription="ewaste"
+            android:paddingTop="20dip"
+            android:paddingHorizontal="20dip"
+            android:src="@drawable/ewastechart2"></ImageView>
+
+        <TextView
+            android:id="@+id/ewasteText2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="20dip"
+            android:text="@string/ewasteText2" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="40dp" />
+
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,259 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'org.jetbrains.kotlin.plugin.serialization' version '1.4.32'
+//    id 'kotlin-android-extensions'
+}
+
+apply plugin: 'jacoco'
+apply plugin: 'kotlinx-serialization'
+
+project.ext.ASSET_DIR = projectDir.toString() + '/src/main/assets'
+
+assert file(project.ext.ASSET_DIR + "/labels.txt").exists()
+assert file(project.ext.ASSET_DIR + "/model.tflite").exists()
+
+android {
+    compileSdkVersion 30
+
+    defaultConfig {
+        applicationId "com.example.snapcycle"
+        minSdkVersion 24
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+
+        // Set the properties within `local.properties` into a `Properties` class so that values
+        // within `local.properties` (e.g. Maps API key) are accessible in this file.
+        Properties properties = new Properties()
+        if (rootProject.file("local.properties").exists()) {
+            properties.load(rootProject.file("local.properties").newDataInputStream())
+        }
+
+        // Inject the Maps API key into the manifest
+        manifestPlaceholders = [mapsApiKey: "AIzaSyCrCqltiVW55cgiV0F4NEk2EbCGA7NEZCc"]
+
+        //trying to fix unity error
+        ndk {
+            abiFilters 'armeabi-v7a', 'arm64-v8a'
+        }
+
+        // For Jacoco
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildFeatures {
+        viewBinding true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            testCoverageEnabled true
+        }
+    }
+
+    // Setting for Jacoco
+    testOptions {
+        animationsDisabled true
+        unitTests {
+            includeAndroidResources = true
+            unitTests.returnDefaultValues = true
+        }
+    }
+    useLibrary 'android.test.runner'
+    useLibrary 'android.test.base'
+    useLibrary 'android.test.mock'
+
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    // settings for tflite
+    // Specify tflite file should not be compressed for the app apk
+    aaptOptions {
+        noCompress "tflite"
+        noCompress "lite"
+    }
+    ndkVersion '23.0.7123448 rc1'
+}
+
+configurations.all {
+    resolutionStrategy {
+        force "androidx.test:runner:1.3.0"
+    }
+}
+
+dependencies {
+    // general app dependencies
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation 'androidx.core:core-ktx:1.3.2'
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'com.google.android.material:material:1.3.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation 'androidx.core:core:1.0.0'
+
+    //ViewModel
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.0'
+//    implementation 'org.jetbrains.kotlinx:kotlinx-serialization-json:1.1.0'
+    implementation "org.jetbrains.kotlinx:kotlinx-serialization-core:1.0.0-RC"
+
+    // maps api dependencies
+    implementation 'com.google.maps.android:android-maps-utils:2.2.0'
+    implementation 'com.google.maps.android:maps-utils-ktx:2.2.0'
+    implementation 'com.google.android.gms:play-services-location:18.0.0'
+//    implementation 'com.google.android.gms:play-services-maps:17.0.0'
+//    implementation 'com.google.android.gms:play-services-maps:17.0.0'
+    implementation 'org.tensorflow:tensorflow-lite-metadata:0.1.0-rc1'
+    implementation 'org.tensorflow:tensorflow-lite-gpu:2.2.0'
+    implementation 'androidx.navigation:navigation-fragment:2.3.4'
+    implementation 'androidx.navigation:navigation-ui:2.3.4'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.3.0'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.0'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.4'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.3.4'
+    implementation 'androidx.preference:preference-ktx:1.1.1'
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.viewpager:viewpager:1.0.0'
+    implementation 'androidx.wear:wear:1.0.0'
+
+    // test dependencies
+    testImplementation 'junit:junit:4.13.2'
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.6.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test:rules:1.1.1'
+//    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    testImplementation "io.mockk:mockk:1.10.6"
+    compileOnly 'com.google.android.wearable:wearable:2.6.0'
+    debugImplementation ('androidx.fragment:fragment-testing:1.3.3') {
+        exclude (group: 'androidx.test', module: 'monitor')
+    }
+    testImplementation  'androidx.test:core:1.3.0'
+    testImplementation 'androidx.test.ext:junit:1.1.2'
+    testImplementation 'org.robolectric:robolectric:4.3.1'
+    testImplementation 'androidx.arch.core:core-testing:2.1.0'
+    // mock web server
+    testImplementation("com.squareup.okhttp3:mockwebserver:4.7.2")
+
+    // Core library
+    androidTestImplementation 'androidx.test:core:1.3.0'
+
+    // AndroidJUnitRunner and JUnit Rules
+    androidTestImplementation 'androidx.test:runner:1.3.0'
+    androidTestImplementation 'androidx.test:rules:1.3.0'
+
+    // Assertions
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.ext:truth:1.3.0'
+    androidTestImplementation 'com.google.truth:truth:1.0.1'
+
+    // Espresso dependencies
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-contrib:3.3.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-intents:3.3.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-web:3.3.0'
+    androidTestImplementation 'androidx.test.espresso.idling:idling-concurrent:3.3.0'
+
+    // The following Espresso dependency can be either "implementation"
+    // or "androidTestImplementation", depending on whether you want the
+    // dependency to appear on your APK's compile classpath or the test APK
+    // classpath.
+    androidTestImplementation 'androidx.test.espresso:espresso-idling-resource:3.3.0'
+
+
+    // androidTestImplementation 'androidx.test.espresso:espresso-accessibility:3.2.0'
+    // known bug in espresso accessibility library
+
+
+    // heroku server interface
+    implementation 'com.google.code.gson:gson:2.8.6'
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation 'com.squareup.okhttp3:okhttp:4.9.0'
+
+    // tflite dependencies
+    // Import the Task Vision Library dependency
+    implementation 'org.tensorflow:tensorflow-lite-task-vision:0.1.0'
+    implementation 'org.tensorflow:tensorflow-lite:2.4.0'
+    implementation 'com.google.mlkit:object-detection-custom:16.3.1'
+    implementation 'org.tensorflow:tensorflow-lite-task-vision:0.1.0'
+
+    // cameraX dependencies
+    // CameraX core library using camera2 implementation
+    implementation "androidx.camera:camera-camera2:1.1.0-alpha02"
+    // CameraX Lifecycle Library
+    implementation "androidx.camera:camera-lifecycle:1.1.0-alpha02"
+    // CameraX View class
+    implementation "androidx.camera:camera-view:1.0.0-alpha22"
+
+    // compatibility API
+    implementation group: 'androidx.legacy', name: 'legacy-support-v13', version: '1.0.0'
+
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestImplementation 'androidx.test:rules:1.3.0-beta01'
+    androidTestCompile('androidx.test.espresso:espresso-core:3.1.0', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'androidx.annotation:annotation:1.0.0'
+
+
+    //unity dependencies
+    implementation project(":launcher-debug")
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(':unityLibrary')
+    implementation fileTree(dir: project(':unityLibrary').getProjectDir().toString() + ('\\libs'), include: ['*.jar'])
+
+
+    // Jacoco Testing
+    jacoco {
+        toolVersion = "0.8.6"
+    }
+    tasks.withType(Test) {
+        jacoco.includeNoLocationClasses = true
+    }
+
+    task jacocoTestReport(type: JacocoReport, dependsOn: ['testDebugUnitTest', 'createDebugCoverageReport']) {
+        group = "Reporting"
+        description = "Generate Jacoco coverage reports for Debug build"
+        reports {
+            xml.enabled = true
+            html.enabled = true
+            html.destination = file("${buildDir}/CODE_COVERAGE_JACOCO")
+        }
+        def excludes = ['**/R.class',
+                          '**/R$*.class',
+                          '**/BuildConfig.*',
+                          '**/Manifest*.*',
+                          '**/*Test*.*',
+                          'android/**/*.*',
+                          '**/data/models/*'
+        ]
+
+        // Generated classes
+        def debugTree = (fileTree(dir: "$buildDir/intermediates/classes/debug", excludes: excludes)
+                + fileTree(dir: "$buildDir/tmp/kotlin-classes/debug", excludes: excludes))
+
+        // Sources
+        def mainSrc = files([android.sourceSets.main.java.srcDirs,
+                             "$project.projectDir/src/main/java"])
+
+        getSourceDirectories().setFrom([mainSrc])
+        getClassDirectories().setFrom([debugTree])
+        getExecutionData().setFrom(fileTree(dir: "$project.buildDir", includes:[
+                "jacoco/testDebugUnitTest.exec",
+                "outputs/code-coverage/debugAndroidTest/connected/*coverage.ec"]))
+    }
+}

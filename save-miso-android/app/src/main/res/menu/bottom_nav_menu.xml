@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navHome"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:title="@string/title_home" />
+
+    <item
+        android:id="@+id/navInstructions"
+        android:icon="@drawable/ic_dashboard_black_24dp"
+        android:title="@string/title_dashboard" />
+
+    <item
+        android:id="@+id/navNotifications"
+        android:icon="@drawable/ic_account_box_24px"
+        android:title="@string/title_account" />
+
+    <item
+        android:id="@+id/navMyRecycling"
+        android:icon="@drawable/ic_myrecycling_black_24dp"
+        android:title="@string/title_myrecycling" />
+
+</menu>

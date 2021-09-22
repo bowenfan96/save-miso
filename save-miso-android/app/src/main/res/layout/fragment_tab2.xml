@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TabFragment1">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingVertical="20dip">
+
+        <TextView
+            android:id="@+id/recyclingLocationsText1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="20dip"
+            android:text="@string/recyclingLocationsText1" />
+
+        <ImageView
+            android:id="@+id/recyclinglocations"
+            android:adjustViewBounds="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:contentDescription="recycling locations"
+            android:paddingTop="20dip"
+            android:paddingHorizontal="20dip"
+            android:src="@drawable/recyclinglocations"></ImageView>
+
+        <TextView
+            android:id="@+id/recyclingLocationsSource1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="@string/recyclingLocationsSource1" />
+
+        <TextView
+            android:id="@+id/recyclingLocationsText2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="20dip"
+            android:text="@string/recyclingLocationsText2" />
+
+        <ImageView
+            android:id="@+id/singlereward"
+            android:adjustViewBounds="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:contentDescription="recycling locations"
+            android:paddingTop="20dip"
+            android:paddingHorizontal="20dip"
+            android:src="@drawable/singlereward"></ImageView>
+
+        <TextView
+            android:id="@+id/recyclingLocationsSource2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="@string/recyclingLocationsSource1" />
+
+        <ImageView
+            android:id="@+id/multirewards"
+            android:adjustViewBounds="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:contentDescription="recycling locations"
+            android:paddingTop="20dip"
+            android:paddingHorizontal="20dip"
+            android:src="@drawable/multirewards"></ImageView>
+
+        <TextView
+            android:id="@+id/recyclingLocationsSource3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="@string/recyclingLocationsSource1" />
+
+        <TextView
+            android:id="@+id/recyclingLocationsText3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="20dip"
+            android:text="@string/recyclingLocationsText3" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="40dp" />
+
+    </LinearLayout>
+</ScrollView>
